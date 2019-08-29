@@ -1,21 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  
+
   const Model = sequelize.Sequelize.Model;
   class User extends Model {
-    static comparePassword = (inputPassword, password) => {
-      const bcrypt = require('bcryptjs');
-      
-      return new Promise((resolve, reject) => {
-         if(bcrypt.compareSync(inputPassword, password)) {
-           resolve()
-         } else {
-           reject('password salah');
-         }
-      })
-    }
+
   };
-  
+
   User.init({
     name: {
       type: DataTypes.STRING,
@@ -39,18 +29,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isUnique: (username, next) => {
-          User.findOne({where: {username}})
-          .then(user => {
-            if (user) {
-              next('username has been used');
-            } else {
-              next();
-            }
-          })
-          .catch(err => {
-            next(err)
-          })
-        } 
+          User.findOne({ where: { username } })
+            .then(user => {
+              if (user) {
+                next('username has been used');
+              } else {
+                next();
+              }
+            })
+            .catch(err => {
+              next(err)
+            })
+        }
       }
     },
     email: {
@@ -76,10 +66,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
-    sequelize
-  });
-  
-  User.associate = function(models) {
+      sequelize
+    });
+
+  User.associate = function (models) {
     // associations can be defined here
     User.hasMany(models.Booking);
   };
