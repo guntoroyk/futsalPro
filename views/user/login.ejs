@@ -18,19 +18,19 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" id="cardId">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Register</h5>
+                        <h5 class="card-title text-center">Sign In</h5>
                         <!-- INI FOEM REGISTER -->
-                        <form class="form-signin">
+                        <form class="form-signin" method="POST">
 
                             <!-- INI INPUT EMAIL -->
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username"
                                     required autofocus>
-                                <label for="inputEmail">Email address</label>
+                                <label for="inputUsername">Username</label>
                             </div>
                             <!-- INI INPUT PASSWORDNYA -->
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"
                                     required>
                                 <label for="inputPassword">Password</label>
                             </div>
