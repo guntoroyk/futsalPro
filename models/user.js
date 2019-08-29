@@ -2,11 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
 
   const Model = sequelize.Sequelize.Model;
-  class Schedule extends Model {
+  class User extends Model {
 
   };
 
-  Schedule.init({
+  User.init({
     name: DataTypes.STRING,
     gender: DataTypes.STRING,
     username: DataTypes.STRING,
