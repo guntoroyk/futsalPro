@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
 
   const Model = sequelize.Sequelize.Model;
   class User extends Model {
-    addTitleName = () => {
+    addTitleName()   {
       if (this.gender === 'male') {
         return `Mr. ${this.name}`
       } else {

@@ -14,12 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false
     }
   }, {
-    sequelize
-  });
+      sequelize
+    });
 
-  Schedule.associate = function(models) {
+  Schedule.associate = function (models) {
     // associations can be defined 
     Schedule.belongsTo(models.Futsalfield);
+    Schedule.hasMany(models.Booking);
   };
   return Schedule;
 };

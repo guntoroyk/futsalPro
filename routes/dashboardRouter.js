@@ -11,16 +11,17 @@ router.get('/', isLogin, (req, res) => {
         include: [{
             model: Futsalfield
         }],
-        where: {isBooked: false}
+        where: { isBooked: false }
     })
-    .then(schedules => {
-        res.render('dashboard/dashboard', {schedules})
-        // res.send(schedules);
-    })
-    .catch(err => {
-        res.send(err);
-    })
-    
+        .then(schedules => {
+            res.render('dashboard/dashboard', { schedules })
+            // res.send(schedules);
+        })
+        .catch(err => {
+            res.send(err);
+        })
+
 })
+
 
 module.exports = router;

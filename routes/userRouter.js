@@ -23,7 +23,7 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    User.findOne({where: {username: req.body.username}})
+    User.findOne({ where: { username: req.body.username } })
         .then(user => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -49,7 +49,7 @@ router.get('/register', (req, res) => {
     for (let key in req.query) {
         errors.push(req.query[key])
     }
-    res.render('user/register', {errors})
+    res.render('user/register', { errors })
 })
 
 // register new user
@@ -67,7 +67,7 @@ router.post('/register', (req, res) => {
         })
         .catch(err => {
             let url = ``;
-            err.errors.forEach((error, i)=> {
+            err.errors.forEach((error, i) => {
                 url += `err${i}=${error.message}&`
             });
             res.redirect(`/user/register?${url}`)
