@@ -27,7 +27,11 @@ app.use('/dashboard', dashboardRouter)
 
 app.use('/bookings', bookingRouter)
 
-app.get('/send-email', (req, res) => {
+app.get('/send', (req, res) => {
+    res.render('index')
+})
+
+app.post('/send-email', (req, res) => {
     let transporter = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -41,8 +45,8 @@ app.get('/send-email', (req, res) => {
     let mailOptions = {
         // should be replaced with real recipient's account
         to: 'guntoro.gyk@gmail.com',
-        subject: "ini subject",
-        body: 'ini body'
+        subject: req.body.subject,
+        text: req.body.message
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -50,7 +54,8 @@ app.get('/send-email', (req, res) => {
         }
         console.log('Message %s sent: %s', info.messageId, info.response);
     });
-    res.writeHead(301, { Location: 'index.html' });
+    // res.writeHead(301, { Location: 'index.html' });
+    res.redirect('/dashboard')
     res.end();
 })
 

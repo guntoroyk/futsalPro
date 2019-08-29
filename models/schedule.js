@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   Schedule.associate = function(models) {
     // associations can be defined 
     Schedule.belongsTo(models.Futsalfield);
+    Schedule.hasMany(models.Booking);
+    Schedule.belongsToMany(models.User, {through: 'Booking'})
   };
   return Schedule;
 };

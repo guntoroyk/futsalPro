@@ -27,8 +27,10 @@ router.post('/login', (req, res) => {
         .then(user => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    req.session.username = req.body.username
+                    req.session.username = user.username
                     req.session.UserId = user.id
+                    req.session.name = user.name
+                    req.session.gender = user.gender
                     res.redirect('/dashboard')
                 } else {
                     res.redirect('/user/login?err=password incorrect')
