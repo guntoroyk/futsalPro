@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* BANNER */
+
+
+
+  .login button {
+    background-color: rgba(0,136,169,.8);
+    padding: 8px 25px;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    font-size: 20px;
+    color: aliceblue;
+   
+  }
+
+  .login button:hover {
+    background-color:  aliceblue;
+    padding: 10px 30px;
+    border-radius: 50px;
+    border: none;
+    color: rgba(0,136,169,1);
+  }
+
+  .login {
+    background-image: linear-gradient(to left bottom, #000000, #110006, #180011, #1c001b, #1a0026, #190f36, #151a48, #00265a, #003c6e, #004e65, #005c40, #076603);
+    height: 100vh;
+    color: rgb(255, 255, 255);
+  }
+
+  .title {
+      padding-left: 13%;
+      padding-top: 13%;
+  }
