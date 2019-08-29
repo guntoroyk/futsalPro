@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,27 +19,33 @@
     <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="my-4" style="text-align: center">Page Heading
-            <small>Secondary Text</small>
+        <h1 class="my-4 head">Schedule List
+            <!-- <small>Secondary Text</small> -->
         </h1>
 
         <div class="row">
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-80">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
+                <% if (schedules) {
+                    schedules.forEach(schedule => { %>
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="card h-80 borderRound">
+                                <a href="#"><img class="card-img-top borderRound" src="<%= schedule.Futsalfield.imageUrl %>" alt=""></a>
+                                <a href="/bookings/add/<%= schedule.id %>"><button>Book this!</button></a>
+                                
+                                <div class="card-body">
+                                    <h3><%= schedule.Futsalfield.name %></h3>
+                                    <h4><%= schedule.Futsalfield.location %></h4>
+                                    <h5><%= schedule.session %></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <% })
+                } %>
 
-
-
-            
+        </div>
         <!-- /.row -->
 
         <!-- Pagination -->
-        <ul class="pagination justify-content-center">
+        <!-- <ul class="pagination justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
@@ -60,7 +67,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </li>
-        </ul>
+        </ul> -->
 
     </div>
 </body>

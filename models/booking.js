@@ -12,10 +12,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       afterCreate: (booking) => {
+        console.log(booking)
         return sequelize.models.Schedule.update({
           isBooked: true
         }, {
-          where: {ScheduleId: booking.ScheduleId}
+          where: {id: booking.ScheduleId}
         })
       }
     },

@@ -21,11 +21,7 @@ router.get('/', isLogin, (req, res) => {
     
 })
 
-router.get('/add', isLogin, (req, res) => {
-    res.render('addBooking')
-})
-
-router.post('/add/:ScheduleId', isLogin, (req, res) => {
+router.get('/add/:ScheduleId', isLogin, (req, res) => {
     Booking.create({
         ScheduleId: req.params.ScheduleId,
         UserId: req.session.UserId
@@ -36,6 +32,10 @@ router.post('/add/:ScheduleId', isLogin, (req, res) => {
     .catch(err => {
         res.send(err);
     })
+})
+
+router.post('/add/:ScheduleId', isLogin, (req, res) => {
+   
 })
 
 router.get('/:BookingId/delete', isLogin, (req, res) => {
