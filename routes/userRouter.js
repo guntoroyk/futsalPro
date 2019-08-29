@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 // go to login page
 router.get('/login', (req, res) => {
-    res.render('userLogin');
+    res.render('user/login');
 })
 
 router.post('/login', (req, res) => {
@@ -45,7 +45,11 @@ router.post('/login', (req, res) => {
 
 // go to register page
 router.get('/register', (req, res) => {
-    res.render('userRegister')
+    let errors = []
+    for (let key in req.query) {
+        errors.push(req.query[key])
+    }
+    res.render('user/register', {errors})
 })
 
 // register new user
@@ -58,10 +62,16 @@ router.post('/register', (req, res) => {
         password: hashPassword(req.body.password)
     })
         .then(user => {
-            res.send('user created')
+            res.redirect('/user/login')
+            // res.send('user created')
         })
         .catch(err => {
-            res.send(err)
+            let url = ``;
+            err.errors.forEach((error, i)=> {
+                url += `err${i}=${error.message}&`
+            });
+            res.redirect(`/user/register?${url}`)
+            // res.send(err)
         })
 })
 

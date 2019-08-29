@@ -7,6 +7,7 @@ const { homeRouter, userRouter, dashboardRouter, bookingRouter } = require('./ro
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
+app.use(express.static('public'))
 
 app.use(session({
     secret: 'keyboard cat',

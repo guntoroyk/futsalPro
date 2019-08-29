@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Futsalfield.init({
     name: DataTypes.STRING,
-    location: DataTypes.STRING
+    location: DataTypes.STRING,
+    imageUrl: DataTypes.STRING
   }, {
     sequelize
   })

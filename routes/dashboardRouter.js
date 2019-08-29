@@ -13,7 +13,8 @@ router.get('/', isLogin, (req, res) => {
         where: {isBooked: false}
     })
     .then(schedules => {
-        res.send(schedules);
+        res.render('dashboard/dashboard', {schedules})
+        // res.send(schedules);
     })
     .catch(err => {
         res.send(err);
