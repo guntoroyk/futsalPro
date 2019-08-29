@@ -13,10 +13,22 @@
 </head>
 
 <body>
+    <!-- NAVBAR -->
+    <header style="padding-top: 20px;">
+        <a href="#">
+            <span class="welcome">Hi..! Gugun</span>
+        </a>
+        <nav>
+            <ul class="navLink">
+                <li><a href="#myPro">my booking list</a></li>
+                <li><a href="#abt">logout</a></li>
+            </ul>
+        </nav>
+    </header>
 
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="padding-top: 20px;">
 
         <!-- Page Heading -->
         <h1 class="my-4 head">Schedule List
@@ -24,21 +36,22 @@
         </h1>
 
         <div class="row">
-                <% if (schedules) {
+            <% if (schedules) {
                     schedules.forEach(schedule => { %>
-                        <div class="col-lg-4 col-sm-6 mb-4">
-                            <div class="card h-80 borderRound">
-                                <a href="#"><img class="card-img-top borderRound" src="<%= schedule.Futsalfield.imageUrl %>" alt=""></a>
-                                <a href="/bookings/add/<%= schedule.id %>"><button>Book this!</button></a>
-                                
-                                <div class="card-body">
-                                    <h3><%= schedule.Futsalfield.name %></h3>
-                                    <h4><%= schedule.Futsalfield.location %></h4>
-                                    <h5><%= schedule.session %></h5>
-                                </div>
-                            </div>
-                        </div>
-                    <% })
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-80 borderRound">
+                    <a href="#"><img class="card-img-top borderRound" src="<%= schedule.Futsalfield.imageUrl %>"
+                            alt=""></a>
+                    <button><a href="/bookings/add/<%= schedule.id %>">Book this!</a></button>
+
+                    <div class="card-body">
+                        <h3><%= schedule.Futsalfield.name %></h3>
+                        <h4><%= schedule.Futsalfield.location %></h4>
+                        <h5><%= schedule.session %></h5>
+                    </div>
+                </div>
+            </div>
+            <% })
                 } %>
 
         </div>
