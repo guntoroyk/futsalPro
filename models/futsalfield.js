@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   
   Futsalfield.associate = function(models) {
     // associations can be defined here
+    Futsalfield.hasMany(models.Schedule);
   };
   return Futsalfield;
 };

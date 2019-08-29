@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Schedule.associate = function(models) {
-    // associations can be defined here
+    // associations can be defined 
+    Schedule.belongsTo(models.Futsalfield);
   };
   return Schedule;
 };

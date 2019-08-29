@@ -1,31 +1,73 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
+
+// models
 const { User } = require('../models');
+
+// helpers
+const { hashPassword } = require('../helpers');
+
+// middlewares
+const { isLogin } = require('../middlewares')
 
 // go to user list
 router.get('/', (req, res) => {
-
+    res.send('user page')
 })
 
 // go to login page
 router.get('/login', (req, res) => {
-
+    res.render('userLogin');
 })
+
+router.post('/login', (req, res) => {
+    User.findOne({where: {username: req.body.username}})
+        .then(user => {
+            if (user) {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    req.session.username = req.body.username
+                    req.session.UserId = user.id
+                    res.redirect('/dashboard')
+                } else {
+                    res.redirect('/user/login?err=password incorrect')
+                }
+            } else {
+                res.redirect('/user/login?err=username not found')
+            }
+        })
+        .catch(err => {
+            res.send(err);
+        })
+})
+
 
 // go to register page
 router.get('/register', (req, res) => {
     res.render('userRegister')
 })
 
+// register new user
 router.post('/register', (req, res) => {
-    User.create(req.body)
+    User.create({
+        name: req.body.name,
+        gender: req.body.gender,
+        username: req.body.username,
+        email: req.body.email,
+        password: hashPassword(req.body.password)
+    })
         .then(user => {
             res.send('user created')
         })
         .catch(err => {
             res.send(err)
         })
+})
+
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/dashboard')
 })
 
 module.exports = router;
