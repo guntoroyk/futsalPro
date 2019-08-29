@@ -4,6 +4,7 @@ const { isLogin } = require('../middlewares')
 
 const { Schedule, User, Booking } = require('../models')
 
+// show user booking list
 router.get('/', isLogin, (req, res) => {
     Booking.findAll({
         include: [
@@ -21,23 +22,21 @@ router.get('/', isLogin, (req, res) => {
     
 })
 
+// book a field
 router.get('/add/:ScheduleId', isLogin, (req, res) => {
     Booking.create({
         ScheduleId: req.params.ScheduleId,
         UserId: req.session.UserId
     })
     .then(() => {
-        res.send('booking berhasil')
+        res.redirect('/dashboard');
     })
     .catch(err => {
         res.send(err);
     })
 })
 
-router.post('/add/:ScheduleId', isLogin, (req, res) => {
-   
-})
-
+// delete a booking list
 router.get('/:BookingId/delete', isLogin, (req, res) => {
     let ScheduleId;
     Booking.findByPk(req.params.BookingId)

@@ -4,6 +4,7 @@ const { isLogin } = require('../middlewares')
 
 const { Schedule, Futsalfield } = require('../models')
 
+// go to dashboard
 router.get('/', isLogin, (req, res) => {
     let username = req.session.username;
     Schedule.findAll({

@@ -3,16 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   
   const Model = sequelize.Sequelize.Model;
   class User extends Model {
-    static comparePassword = (inputPassword, password) => {
-      const bcrypt = require('bcryptjs');
-      
-      return new Promise((resolve, reject) => {
-         if(bcrypt.compareSync(inputPassword, password)) {
-           resolve()
-         } else {
-           reject('password salah');
-         }
-      })
+    addTitleName = () => {
+      if (this.gender === 'male') {
+        return `Mr. ${this.name}`
+      } else {
+        return `Ms. ${this.name}`
+      }
     }
   };
   
