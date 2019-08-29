@@ -2,9 +2,10 @@
   "name": "futsalPro",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,11 @@
   },
   "homepage": "https://github.com/guntoroyk/futsalPro#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "pg": "^7.12.1",
-    "sequelize": "^5.17.1"
+    "sequelize": "^5.16.0"
   }
 }
