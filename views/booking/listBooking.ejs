@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hai.. <%= username %></h1>
+    <div class="container">
+        <button type="button" class="btn btn-primary" style="margin: 10px; margin-left: 90%;"><a style="color: white;"
+                href="dashboard">Dashboard</a>
+        </button>
+        <table class="table table-striped">
+    </div>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Field</th>
+            <th scope="col">Lacation</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(bookinglist.length === 0) __append("<tr><td colspan='4'>No Data!</td></tr>"); %>
+
+        <% bookinglist.forEach((el, i) => {
+                        const {ScheduleId} = el.dataValues
+                         const {session} = el.dataValues.Schedule
+                         const {name, location} = futsalFieldData[i].dataValues
+                         const table =
+                            `<tr>
+                                <td>${session}</td>
+                                <td>${name}</td>
+                                <td>${location}</td>
+                                <td>
+                                    <a href="/bookings/${ScheduleId}/cancel">Cancel</a>
+                                </td>
+                            </tr>`
+                            __append(table)
+                           }) %>
+    </tbody>
+    </table>
+    </div>
+</body>
+
+</html>
