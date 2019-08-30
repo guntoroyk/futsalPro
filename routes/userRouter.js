@@ -14,12 +14,21 @@ const { isLogin } = require('../middlewares')
 
 // go to user list
 router.get('/', (req, res) => {
-    res.send('user page')
+    if (req.session.username) {
+        res.redirect('/dashboard')
+    } else {
+        res.redirect('/user/login')
+    }
 })
 
 // go to login page
 router.get('/login', (req, res) => {
-    res.render('user/login');
+    if (req.session.username) {
+        res.redirect('/dashboard')
+    } else {
+        res.render('user/login');
+        // res.redirect('/user/login')
+    }
 })
 
 router.post('/login', (req, res) => {
