@@ -5,5 +5,12 @@
     "database": "db-futsalPro",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "production": {
+    "username": "endrgdcmybsbip",
+    "password": "088228953ea53e863ef66e6774e172ad1445a5a1636e0268d264583972c1a6d1",
+    "database": "df7vp0u67k2rbc",
+    "host": "ec2-50-16-197-244.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
