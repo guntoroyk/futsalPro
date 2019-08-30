@@ -3,7 +3,7 @@ const app = express();
 const session = require('express-session');
 const path = require('path');
 const nodeMailer = require('nodemailer');
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const { homeRouter, userRouter, dashboardRouter, bookingRouter } = require('./routes');
 
