@@ -1,4 +1,5 @@
 'use strict';
+const hashPassword = require('../helpers')
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -8,7 +9,7 @@ module.exports = {
         gender: 'male',
         username: 'johndoe',
         email: 'john@doe.com',
-        password: 'password',
+        password: hashPassword('password'),
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -17,7 +18,7 @@ module.exports = {
         gender: 'female',
         username: 'bloblu',
         email: 'blo@blu.com',
-        password: 'password',
+        password: hashPassword('password'),
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -26,7 +27,7 @@ module.exports = {
         gender: 'male',
         username: 'kopiko',
         email: 'kopi@ko.com',
-        password: 'password',
+        password: hashPassword('password'),
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -35,7 +36,7 @@ module.exports = {
         gender: 'female',
         username: 'kenangan',
         email: 'kenang@an.com',
-        password: 'password',
+        password: hashPassword('password'),
         createdAt: new Date(),
         updatedAt: new Date()
       },
